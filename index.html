@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <form action="" v-on:submit.prevent="currentItem">
+      <label for="name">Name</label>
+      <input v-model="currentItem"  type="text" id="name">
+      <label for="surname">Surname</label>
+      <input v-model="currentItem" type="text" id="surname">
+     <button type="submit" @click="addItem">Add item</button>
+      <button type="submit" @click="removeItem">Remove item</button>
+    </form>
+    <br><br>
+    <table border="1">
+      <thead>
+        <th>Name</th>
+        <th>Surname</th>
+      </thead>
+      <tr v-for="item in items">
+        <td> {{ item.name }}</td>
+        <td> {{ item.surname }}</td>
+        <td><button>hello</button></td>
+      </tr>
+    </table>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+  <script>
+    new Vue ({
+      el: '#app',
+      data: {
+       items: [
+         { name: "John", surname: "Smith" },
+         { name: "Michael", surname: "Clark" },
+         { name: "Steve", surname: "Simpson" }, 
+       ],
+       currentItem: ''
+      },
+      methods: {
+        addItem: function() {
+          this.items.push(this.currentItem);
+        }, 
+         removeItem: function() {
+          this.items.pop(this.currentItem);
+        } 
+      
+       }
+      
+      
+    })
+  </script>
+</body>
+</html>
